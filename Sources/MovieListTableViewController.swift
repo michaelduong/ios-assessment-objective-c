@@ -14,6 +14,7 @@ class MovieListTableViewController: UITableViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "SHOW TIME...search"
+        movieSearchBar.delegate = self 
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
