@@ -22,18 +22,18 @@
     return shared;
 }
 
-+ (void)fetchMovieInformationFromAPIWithTitle:(NSString *)title completion:(void (^)(Movie *))completion
++ (void)fetchMovieInformationFromAPIWithTitle:(NSString *)title completion:(void (^)(NSArray *movies))completion
 {
     NSString *baseURLString =  @"https://api.themoviedb.org/3/search/movie";
-    // NSString *apiKey = @"3e6fc78d34ea9b6595d61441a091daf9";  Is this better than p-list?
+    NSString *apiKey = @"3e6fc78d34ea9b6595d61441a091daf9";  // Is this better than p-list?
     
     NSURL *baseURL = [[NSURL alloc]initWithString:baseURLString]; // UTF-8 encoding???
     NSURLComponents *urlComponents = [NSURLComponents componentsWithURL:baseURL resolvingAgainstBaseURL:YES];
     
     // The way we want it to be formated. Like the datestyle in journal
-    NSURLQueryItem *apiKeyItme = [NSURLQueryItem queryItemWithName:@"api_key" value:[self fetchAPIKeyFromPlist]];
+    NSURLQueryItem *apiKeyItme = [NSURLQueryItem queryItemWithName:@"api_key" value:apiKey];
     
-    NSURLQueryItem *movieItem = [NSURLQueryItem queryItemWithName:@"movie" value:@"json"];
+    NSURLQueryItem *movieItem = [NSURLQueryItem queryItemWithName:@"query" value:title];
     
     urlComponents.queryItems = @[apiKeyItme, movieItem];
     
@@ -53,12 +53,24 @@
         }
         
         NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
+        NSArray *movieArray = jsonDictionary[@"results"];
+        
+        // creating a mutable array
+        NSMutableArray *movies = [[NSMutableArray alloc]init]; // how you initailize
+        
+        for(NSDictionary *dict in movieArray) {
+            Movie *movie = [[Movie alloc]initWithDictionary:dict];
+            
+            [movies addObject:movie]; // This is the array of everything you need
+        }
+        
         if (!jsonDictionary) {
             NSLog(@"Error: could not sterelize data");
             completion(nil);
             return;
         }
         
+        // Why???
         NSString *errorString = jsonDictionary[@"error"];
         
         if (errorString) {
@@ -66,9 +78,8 @@
             completion(nil);
             return;
         }
-        Movie *movieInfo = [[Movie alloc] initWithDictionary:jsonDictionary];
         
-        completion(movieInfo);
+        completion(movies);
     }] resume];
 }
 
@@ -78,7 +89,7 @@
     NSURL *posterURL = [NSURL URLWithString:urlString];
     
     // // @"https://image.tmdb.org/t/p/w500/";
-
+    
     
     [[[NSURLSession sharedSession] dataTaskWithURL:posterURL completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         

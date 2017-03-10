@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MovieController : NSObject
 + (MovieController *)shared;
 
-+ (void) fetchMovieInformationFromAPIWithTitle:(NSString *)title completion: (void (^)(Movie *posterImage))completion;
++ (void) fetchMovieInformationFromAPIWithTitle:(NSString *)title completion: (void (^)(NSArray *movies))completion;
 
 // We need a function to grab the image
 

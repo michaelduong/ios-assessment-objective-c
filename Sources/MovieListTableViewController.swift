@@ -23,7 +23,9 @@ class MovieListTableViewController: UITableViewController, UISearchBarDelegate {
         
         MovieController.fetchMovieInformationFromAPI(withTitle: searchTerm) { (newMovie) in
             DispatchQueue.main.async {
-                self.movie = [newMovie]
+                guard let newMovie = newMovie as? [Movie] else { return }
+                self.movie = newMovie
+                self.tableView.reloadData()
             }
         }
     }
