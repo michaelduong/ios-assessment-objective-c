@@ -23,7 +23,7 @@ class MovieTableViewCell: UITableViewCell {
     func updateViews() {
         guard let movie = self.movies else { return }
         self.movieNameLabel.text = movie.title
-        self.ratingLabel.text = "\(movie.rating)"
+        self.ratingLabel.text = "Rating: \(movie.rating)"
         self.descriptionTextView.text = movie.overview
         
         NLRMovieController.shared().fetchMoviePosterImage(movie.posterImage) { (image) in
