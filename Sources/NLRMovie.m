@@ -10,7 +10,7 @@
 
 @implementation NLRMovie
 
--(instancetype)initWithTitle:(NSString *)title overview:(NSString *)overview rating:(NSUInteger)rating posterImage:(NSString *)posterImage
+-(instancetype)initWithTitle:(NSString *)title overview:(NSString *)overview rating:(NSInteger)rating posterImage:(NSString *)posterImage
 {
     self = [super init];
     if (self) {
@@ -32,14 +32,14 @@
 {
     NSString *title = dictionary[@"title"];
     NSString *overview = dictionary[@"overview"];
-    NSInteger rating = [dictionary[@"vote_average"] integerValue];       // integervalue ? 
+    NSInteger rating = [dictionary[@"vote_average"] integerValue];       // Should this be integervalue
     NSString *posterImage = dictionary[@"poster_path"];
     
-    if (![title isKindOfClass:[NSString class]] || [overview isKindOfClass:[NSString class]]) {
+    if (![title isKindOfClass:[NSString class]] || ![overview isKindOfClass:[NSString class]]) {
         return nil;
     }
     
-    return [self initWithTitle:title overview:overview rating:rating posterImage:posterImage];
+    return [self initWithTitle:title overview:overview rating:rating  posterImage:posterImage];
 }
 //Convenience initailizer - is a delegator initializer (swift)
 

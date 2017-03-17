@@ -6,6 +6,8 @@
 //  Copyright © 2017 Open Reel Software. All rights reserved.
 //
 
+
+
 #import "NLRMovieController.h"
 #import "NLRMovie.h"
 
@@ -76,7 +78,7 @@ static NSString *const apiKey = @"3e6fc78d34ea9b6595d61441a091daf9";
         NSMutableArray *movies = [NSMutableArray new];
         
         for (NSDictionary *movie in movieDictionaries) {
-            NLRMovie *newMovie = [[NLRMovie alloc]initWithDictionary:movie];
+            NLRMovie *newMovie = [[NLRMovie alloc] initWithDictionary:movie];
             if (newMovie) {
             [movies addObject:newMovie];
             }

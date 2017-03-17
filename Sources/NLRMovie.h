@@ -17,7 +17,7 @@
                                                         // Light weight generics?
                                                         // Light weight migrations?
 
--(instancetype)initWithTitle:(NSString *)title overview:(NSString *)overview rating:(NSUInteger)rating posterImage:(NSString *)posterImage;
+-(instancetype)initWithTitle:(NSString *)title overview:(NSString *)overview rating:(NSInteger)rating posterImage:(NSString *)posterImage;
 
 @end
 
