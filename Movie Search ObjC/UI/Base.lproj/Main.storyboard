@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="k65-Gs-pza">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13771"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Movie Search-->
+        <scene sceneID="qfr-sm-E3f">
+            <objects>
+                <tableViewController title="Movie Search" id="k65-Gs-pza" customClass="MovieListTableViewController" customModule="Movie_Search_ObjC" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="2cY-XA-bIR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Enter Movie Title..." id="3Nr-yI-I9z">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="movieCell" rowHeight="200" id="kgW-Dy-0IO" customClass="MovieTableViewCell" customModule="Movie_Search_ObjC" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="84" width="375" height="200"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kgW-Dy-0IO" id="6MO-Ev-YQk">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="199.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T3Y-MQ-TSc">
+                                            <rect key="frame" x="165.5" y="27" width="44" height="18"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2X2-dU-ZkR">
+                                            <rect key="frame" x="16" y="53" width="343" height="138"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nnJ-E3-dNi">
+                                            <rect key="frame" x="144" y="2" width="87" height="21"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="2X2-dU-ZkR" firstAttribute="leading" secondItem="6MO-Ev-YQk" secondAttribute="leading" constant="16" id="ETn-Mf-zMw"/>
+                                        <constraint firstItem="nnJ-E3-dNi" firstAttribute="centerX" secondItem="6MO-Ev-YQk" secondAttribute="centerX" id="Eu3-Vj-B7P"/>
+                                        <constraint firstAttribute="trailing" secondItem="2X2-dU-ZkR" secondAttribute="trailing" constant="16" id="P1W-Zs-ThL"/>
+                                        <constraint firstItem="nnJ-E3-dNi" firstAttribute="top" secondItem="6MO-Ev-YQk" secondAttribute="top" constant="2" id="gpQ-9j-Jjs"/>
+                                        <constraint firstItem="T3Y-MQ-TSc" firstAttribute="top" secondItem="nnJ-E3-dNi" secondAttribute="bottom" constant="4" id="jS3-aw-lnP"/>
+                                        <constraint firstAttribute="bottom" secondItem="2X2-dU-ZkR" secondAttribute="bottom" constant="8" id="omR-VC-BlF"/>
+                                        <constraint firstItem="T3Y-MQ-TSc" firstAttribute="top" secondItem="nnJ-E3-dNi" secondAttribute="bottom" constant="4" id="q46-H8-ekT"/>
+                                        <constraint firstItem="2X2-dU-ZkR" firstAttribute="top" secondItem="T3Y-MQ-TSc" secondAttribute="bottom" constant="8" id="sgL-yj-Pz4"/>
+                                        <constraint firstItem="T3Y-MQ-TSc" firstAttribute="centerX" secondItem="6MO-Ev-YQk" secondAttribute="centerX" id="vvU-0s-j4E"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="movieRating" destination="T3Y-MQ-TSc" id="sUZ-OA-9wP"/>
+                                    <outlet property="movieSummary" destination="2X2-dU-ZkR" id="J92-Cf-gcZ"/>
+                                    <outlet property="movieTitle" destination="nnJ-E3-dNi" id="1sK-3T-gd6"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="k65-Gs-pza" id="npH-z0-n6Y"/>
+                            <outlet property="delegate" destination="k65-Gs-pza" id="jxj-bc-C6S"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="movieSearchBar" destination="3Nr-yI-I9z" id="VoG-7r-b8D"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4yr-hn-Iut" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="140" y="4.0479760119940034"/>
+        </scene>
+    </scenes>
+</document>

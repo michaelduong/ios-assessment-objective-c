@@ -1,9 +1,9 @@
 //
 //  AppDelegate.h
-//  MovieSearch-ObjC
+//  Movie Search ObjC
 //
-//  Created by Andrew Madsen on 2/1/17.
-//  Copyright © 2017 Open Reel Software. All rights reserved.
+//  Created by Michael Duong on 2/16/18.
+//  Copyright © 2018 Turnt Labs. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

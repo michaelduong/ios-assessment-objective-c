@@ -1,9 +1,9 @@
 //
 //  MovieListTableViewController.swift
-//  MovieSearch
+//  Movie Search ObjC
 //
-//  Created by Nick Reichard on 3/10/17.
-//  Copyright © 2017 Open Reel Software. All rights reserved.
+//  Created by Michael Duong on 2/16/18.
+//  Copyright © 2018 Turnt Labs. All rights reserved.
 //
 
 import UIKit
@@ -11,46 +11,47 @@ import UIKit
 class MovieListTableViewController: UITableViewController, UISearchBarDelegate {
     @IBOutlet weak var movieSearchBar: UISearchBar!
     
+    var movie: [TRLMovie] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "SHOW TIME...search"
-        movieSearchBar.delegate = self 
+        self.title = "Movie Search ObjC"
+        movieSearchBar.delegate = self
+
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let input = searchBar.text else { return }
         searchBar.resignFirstResponder()
-        guard let searchTerm = searchBar.text else { return }
-        
-        MovieController.fetchMovieInformationFromAPI(withTitle: searchTerm) { (newMovie) in
+        let cleanedInput = input.replacingOccurrences(of: " ", with: "+")
+        TRLMovieController.fetchMovieInfo(withTitle: cleanedInput) { (newMovie) in
             DispatchQueue.main.async {
-                guard let newMovie = newMovie as? [Movie] else { return }
+                guard let newMovie = newMovie as? [TRLMovie] else { return }
+                
                 self.movie = newMovie
                 self.tableView.reloadData()
             }
         }
     }
-    
-    // MARK: - Properties
-    var movie: [Movie] = []
-    
-    // MARK: - Table view data source
-    
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return self.movie.count
+    }
+
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 200
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "movieCell", for: indexPath) as? MovieTableViewCell else { return UITableViewCell() }
+
         let movie = self.movie[indexPath.row]
         
         cell.movie = movie
+        
         return cell
     }
-    
-    // MARK: - Navigation -- Use if you segue to another VC
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-    }
+ 
+
+
 }
